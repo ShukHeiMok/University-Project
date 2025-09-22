@@ -1,0 +1,60 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}F1.5 Store{% endblock %}
+
+{% block navbar %}						
+<head>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/part3.css')}}">
+</head>
+
+<img src= "{{url_for('static', filename='/Image/Shopbanner.jpg')}}" width="250" height="200" style="margin-left:auto;margin-right:auto">
+    <nav id="navigationbar" >
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home Product
+			<a class="navbar-brand" href="{{ url_for('basket')}}">Basket</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+<body style="background-color:lightyellow">
+		<div id="wrapper">
+		<div id="leftcol">
+				{{ wtf.quick_form(sortform) }}
+		</div>
+		<div id="rightcol"></div>
+		<div id="maincontentcol">
+			<h3 id="contenthead">Product Gallery</h3>
+			<table>
+					
+			{% for product in products %}
+			<tr class="PTitle">
+					<td rowspan="3"style="width:30%"><a href="{{url_for('product', id=product.id)}}"><img src= "{{product.image}}" width="260" height="140"></a>	</td>
+					<td colspan="2"><a href="{{url_for('product', id=product.id)}}">{{product.name}}</td></a>
+			</tr>		
+			<tr>
+				<td style="width:30%">Carbon Footprint: {{product.environment}}kg of CO2</td>
+				<td style="width:30%">£{{product.price}}</td>
+			</tr>
+			<tr>
+				<td><a href="{{url_for('product', id=product.id)}}">Find Out More</a></td>
+				<td><a href="{{url_for('addtocart', id=product.id, destination="home")}}"><button class="button"> ADD</button></a></td>		
+			</tr>
+			{% endfor%}
+			</table>
+		<hr/>
+		<div style="margin-left:auto;margin-right:auto;width:100%">
+		<img src= "{{url_for('static', filename='/Image/partner1.png')}}" width="350" height="300" style="float:left"><img src= "{{url_for('static', filename='/Image/partner2.jpg')}}" width="350" height="300" style="float:right">
+				
+		</div>
+</div>
+</div>
+</body>
+{% endblock %}
+
+
+
+
+
+

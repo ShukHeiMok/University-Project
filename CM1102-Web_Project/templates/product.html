@@ -1,0 +1,50 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Relational Database Example{% endblock %}
+
+{% block navbar %}
+ <head>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/part3.css')}}">
+</head>
+
+<header id="head">F1.5 Store</header>
+    <nav id="navigationbar" >
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home Product</a>
+			<a class="navbar-brand" href="{{ url_for('basket')}}">Basket</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+<body style="background-color:lightyellow">
+		<div id="wrapper">
+		<div id="otherleftcol">
+				<button ><a class="navbar-brand" href="{{ url_for('home') }}">Back</a><
+		</div>
+		<div id="otherrightcol"></div>
+		<div id="othercenter">
+		<table>
+		<tr>
+			<td rowspan="4" style="width:30%"><img src= "{{result.image}}" width="240" height="210"></td>
+			<td colspan="2" class="PTitle">{{result.name}}</td>
+		</tr>
+		<tr>
+			<td colspan="2">{{result.description}}</td>
+		</tr>	
+		<tr>
+			<td>Carbon Footprint:{{result.environment}}kg/km</td>
+			<td rowspan="2"><a href="{{url_for('addtocart', id=result.id, destination="product")}}"><button class="button"> ADD</button></a></td>
+		</tr>	
+		<tr>
+			<td>£{{result.price}}</td>
+		</tr>
+		</table>
+		
+		
+
+</div>
+</div>
+</body>
+{% endblock %}

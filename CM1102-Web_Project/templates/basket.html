@@ -1,0 +1,65 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}F1.5 Store{% endblock %}
+
+{% block navbar %}
+<head>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='/css/part3.css')}}">
+
+
+
+</head>
+<header id="head">F1.5 Store</header>
+    <nav id="navigationbar" >
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Home Product
+			<a class="navbar-brand" href="{{ url_for('basket')}}">Basket</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+<body style="background-color:lightyellow">	
+		<div id="wrapper">
+		<div id="otherleftcol"></div>
+		<div id="otherrightcol"></div>
+		<div id="othercenter">
+			<h3 id="contenthead">Basket</h3>
+			<table style="margin-left:auto;margin-right:auto;width:100%">
+			<tr>
+				<th style="width:30%">Image</th>
+				<th style="width:40%">Name</th>
+				<th>Price</th>
+				<th></th>
+			</tr>
+			{% for product in a %}
+					<tr>
+						<td><a href="{{url_for('product', id=product[0])}}"><img src= "{{product[1]}}" width="200" height="150"></a></td>
+						<td>{{product[2]}}</td>
+						<td>{{product[3]}}</td>
+						<td><a href="{{url_for('remove', id=product[0])}}"><button> Remove</button></a></td>
+					</tr>	
+				{% endfor%}
+			<tr>
+				<td rowspan="2"></td>
+				<td>Total:</td>
+				<td>£{{finalprice}}</td>
+			</tr>
+			<tr>
+			</tr>
+			{% if Pay %}
+				<tr>
+					<td ></td>
+					<td></td>
+					<td><a href="{{url_for('checkout', finalprice=finalprice)}}"><button> PAY</button></a></td>
+				</tr>	
+			{% endif %} 
+			</table>
+		
+</div>
+</div>
+</body>		
+			
+
+{% endblock %}
