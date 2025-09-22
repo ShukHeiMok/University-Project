@@ -1,7 +1,7 @@
 ## Group 29 - IoT Project - Smart Doorbell
 
 ## Description
-Our project is a smart doorbell designed to help owners observe motion outside of their house with convenience.
+Our project is a smart doorbell designed to help owners observe motion outside of their house with convenience. The doorbell is implemented on Raspberry Pi & GrovePi+.
 
 ## Sensors and Actuators
 Sensors: Camera, Ultrasonic Ranger, and LED button (button).
